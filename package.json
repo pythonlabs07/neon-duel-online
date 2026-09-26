@@ -1,1 +1,7 @@
-{"name":"neon-duel-1v1","version":"1.0.0","private":true,"scripts":{"start":"node server.js"},"dependencies":{"ws":"^8.18.0","three":"^0.160.0"}}
+{
+  "name":"neon-duel-online-v3",
+  "version":"3.0.0",
+  "private":true,
+  "scripts":{"start":"node server.js"},
+  "dependencies":{"three":"^0.160.0","ws":"^8.18.0"}
+}
