@@ -18,7 +18,7 @@ function fireRay(shooter,target,yaw,pitch,spread){const yy=yaw+(Math.random()-.5
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg'};
 const server=http.createServer((req,res)=>{
   const raw=(req.url||'/').split('?')[0];
-  if(raw==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(JSON.stringify({ok:true,rooms:rooms.size,version:'online-v4-light'}))}
+  if(raw==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(JSON.stringify({ok:true,rooms:rooms.size,version:'online-v5-day'}))}
   let file;
   if(raw==='/three.module.js')file=path.join(ROOT,'node_modules','three','build','three.module.js');
   else{const clean=raw==='/'?'index.html':decodeURIComponent(raw).replace(/^\/+/, '');file=path.resolve(ROOT,clean);if(!file.startsWith(path.resolve(ROOT)+path.sep)&&file!==path.resolve(ROOT,'index.html')){res.writeHead(403);return res.end('Forbidden')}}

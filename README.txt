@@ -1,16 +1,9 @@
-NEON DUEL ONLINE V3
+NEON DUEL ONLINE V5 DAY
 
-Arquivos que devem ficar na RAIZ do repositório GitHub:
-- index.html
-- game.js
-- server.js
-- package.json
+Mudanças:
+- mapa diurno, sem teto e sem luzes neon pesadas
+- paredes com textura leve de tijolos gerada no navegador
+- arma de primeira pessoa redesenhada em 3D
+- multiplayer, servidor e bonecos preservados
 
-Render:
-Build Command: npm install
-Start Command: npm start
-
-Teste do servidor:
-https://SEU-DOMINIO.onrender.com/health
-Deve aparecer algo parecido com:
-{"ok":true,"rooms":0,"version":"online-v3"}
+No Render: envie index.html, game.js, server.js e package.json para a raiz do repositório e faça um novo deploy.
