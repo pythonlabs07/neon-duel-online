@@ -1,6 +1,6 @@
 {
-  "name":"neon-duel-online-v3",
-  "version":"3.0.0",
+  "name":"neon-duel-online-v4-light",
+  "version":"4.0.0",
   "private":true,
   "scripts":{"start":"node server.js"},
   "dependencies":{"three":"^0.160.0","ws":"^8.18.0"}

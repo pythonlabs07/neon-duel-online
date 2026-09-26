@@ -18,7 +18,7 @@ function fireRay(shooter,target,yaw,pitch,spread){const yy=yaw+(Math.random()-.5
 const MIME={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.json':'application/json; charset=utf-8','.css':'text/css; charset=utf-8','.png':'image/png','.jpg':'image/jpeg','.jpeg':'image/jpeg'};
 const server=http.createServer((req,res)=>{
   const raw=(req.url||'/').split('?')[0];
-  if(raw==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(JSON.stringify({ok:true,rooms:rooms.size,version:'online-v3'}))}
+  if(raw==='/health'){res.writeHead(200,{'Content-Type':'application/json','Cache-Control':'no-store'});return res.end(JSON.stringify({ok:true,rooms:rooms.size,version:'online-v4-light'}))}
   let file;
   if(raw==='/three.module.js')file=path.join(ROOT,'node_modules','three','build','three.module.js');
   else{const clean=raw==='/'?'index.html':decodeURIComponent(raw).replace(/^\/+/, '');file=path.resolve(ROOT,clean);if(!file.startsWith(path.resolve(ROOT)+path.sep)&&file!==path.resolve(ROOT,'index.html')){res.writeHead(403);return res.end('Forbidden')}}
@@ -40,6 +40,6 @@ wss.on('connection',ws=>{
 });
 function respawn(r,p){if(r.ended||!r.players.includes(p))return;const s=spawns[p.spawnIndex];p.x=s.x;p.z=s.z;p.hp=100;p.alive=true;p.ammo=ammo();p.reloadingUntil=0}
 function resetMatch(r){if(!rooms.has(r.code))return;r.ended=false;r.players.forEach((p,i)=>{p.score=0;p.spawnIndex=i;respawn(r,p)});broadcast(r,{type:'matchStart'})}
-setInterval(()=>{for(const r of rooms.values()){broadcast(r,{type:'snapshot',players:r.players.map(p=>({id:p.id,x:p.x,z:p.z,yaw:p.yaw,pitch:p.pitch,hp:p.hp,score:p.score,alive:p.alive,weapon:p.weapon,ammo:p.ammo}))})}},66);
+setInterval(()=>{for(const r of rooms.values()){broadcast(r,{type:'snapshot',players:r.players.map(p=>({id:p.id,x:p.x,z:p.z,yaw:p.yaw,pitch:p.pitch,hp:p.hp,score:p.score,alive:p.alive,weapon:p.weapon,ammo:p.ammo}))})}},100);
 setInterval(()=>{for(const ws of wss.clients){if(ws.isAlive===false){ws.terminate();continue}ws.isAlive=false;try{ws.ping()}catch{}}},25000);
-server.listen(PORT,'0.0.0.0',()=>console.log(`NEON DUEL ONLINE V3 em http://0.0.0.0:${PORT}`));
+server.listen(PORT,'0.0.0.0',()=>console.log(`NEON DUEL ONLINE V4 LIGHT em http://0.0.0.0:${PORT}`));

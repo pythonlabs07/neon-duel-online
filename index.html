@@ -17,7 +17,7 @@
   <div class="panel">
     <div class="logo">NEON DUEL</div>
     <div class="sub">FPS 3D 1v1 — sem sangue</div>
-    <div class="version">ONLINE V3 — botão de sala independente do motor 3D</div>
+    <div class="version">ONLINE V4 LIGHT — otimizado para celular</div>
     <input id="serverUrl" aria-label="Servidor WebSocket" placeholder="Servidor WebSocket">
     <div class="row">
       <button class="btn primary" id="createBtn">CRIAR SALA</button>
@@ -78,7 +78,7 @@
   async function loadGame(){
     if(gameAPI)return gameAPI;
     setInfo('Carregando motor 3D...');
-    const mod=await import('/game.js?v=3');
+    const mod=await import('/game.js?v=4light');
     gameAPI=await mod.createGame({ui,send:(o)=>{if(socket&&socket.readyState===1)socket.send(JSON.stringify(o))}});
     return gameAPI;
   }
